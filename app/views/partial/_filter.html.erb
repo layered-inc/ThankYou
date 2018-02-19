@@ -1,0 +1,35 @@
+<%
+  option = users.map do |user|
+    if user.provider
+      team_name = if user.team.present?
+        "<b>@#{user.team}</b>"
+      else
+        ''
+      end
+      [user.name, user.id, { 'data-content': "<img class='img-circle profile-mini' src=#{user.image}> #{user.name} #{team_name}" }]
+    else
+      [user.email, user.id, { 'data-content': "<i class='fa fa-envelope fa-lg' aria-hidden='true'></i> #{user.email}" }]
+    end
+  end
+%>
+
+<%= form_tag search_messages_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
+  <div class="form-group">
+    <%= select_tag :searching_user_id,
+      options_for_select(option, params[:searching_user_id]),
+      { prompt: "メッセージ検索", class: "form-control selectpicker", data: { "live-search": true } }
+    %>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: 'submit', class: 'btn btn-default', value: 'sender', data: { disable_with: '検索中...' } do %>
+      送信人
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: 'submit', class: 'btn btn-default', value: 'recipient', data: { disable_with: '検索中...' } do %>
+      受取人
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">プロフィールを編集</div>
+      <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render 'partial/devise_error_msg' %>
+
+          <div class="form-group">
+            <%= f.text_field :name, autofocus: true, :placeholder => "名前", :class => 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.email_field :email, :placeholder => "Email", :class => 'form-control', readonly: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :新しいパスワード %> <i>(変更しない場合は空欄で構いません)</i><br/>
+            <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :新しいパスワードの確認 %><br/>
+            <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "プロフィールを更新", :class => "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+
+    <p><%= button_to "アカウント削除", registration_path(resource_name), class: 'btn btn-danger btn-sm', data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <p class="help-block">※ 送信、受信したメッセージ、関連するいいねも全部削除されますので、ご注意ください</p>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.1
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - 'db/schema.rb'
+    - 'features/**/*'
+    - 'spec/**/*'
+Encoding:
+  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+Metrics/LineLength:
+  Max: 250
+MethodLength:
+  Max: 40
+Metrics/BlockLength:
+  Enabled: false
+Documentation:
+  Enabled: false
+CyclomaticComplexity:
+  Enabled: false
+ClassAndModuleChildren:
+  Enabled: false
+Style/FileName:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  SupportedStyles: compact
+Style/AccessorMethodName:
+  Enabled: false
+ClassLength:
+  Max: 210
+PerceivedComplexity:
+  Enabled: false
+TrivialAccessors:
+  Enabled: false
+Lint/RescueException:
+  Enabled: false
+RedundantSelf:
+  Enabled: false
+Layout/AlignParameters:
+  Enabled: false
+Layout/IndentationWidth:
+  Enabled: false
+Layout/ElseAlignment:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+AbcSize:
+  Enabled: false
+Style/BlockDelimiters:
+  Enabled: true
+  Exclude:
+    - spec/**/*_spec.rb # For .change blocks.
+MultilineOperationIndentation:
+  Enabled: false
+Security/YAMLLoad:
+  Enabled: false
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+Lint/UselessAccessModifier:
+  Enabled: false
+Style/MixinGrouping:
+  Enabled: false
+
+# The following should be re-enabled for ruby 3 update
+Style/StringLiterals:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: false
+Performance/TimesMap:
+  Enabled: false
+Style/IfInsideElse:
+  Enabled: false
+Style/FormatStringToken:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+# These only apply to rails 5 and above
+Rails/HttpPositionalArguments:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false

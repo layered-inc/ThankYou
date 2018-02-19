@@ -1,0 +1,9 @@
+<% unless resource.errors.empty? %>
+  <script type="text/javascript" charset="utf-8">
+    <% resource.errors.full_messages.each do |msg| %>
+    toastr.options.positionClass = 'toast-bottom-left';
+    toastr.options.closeButton = true;
+    toastr.error('<%= msg %>');
+    <% end %>
+  </script>
+<% end %>

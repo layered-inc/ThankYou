@@ -1,0 +1,81 @@
+<div class="item-box">
+  <div class="image">
+    <div class="img-wrap">
+      <div class="media">
+        <div class="media-left">
+          <% if message.sender.provider %>
+            <% if message.sender.image %>
+              <%= image_tag message.sender.image, class: 'img-rounded media-object profile-1' %>
+            <% end %>
+            <%= message.sender.name %>
+          <% else %>
+            <%= message.sender.email %>
+          <% end %>
+        </div>
+
+        <div class="media-body">
+          <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+        </div>
+
+        <div class="media-right">
+          <% if message.recipient.provider %>
+            <% if message.recipient.image %>
+              <%= image_tag message.recipient.image, class: 'img-rounded media-object profile-1 pull-right' %>
+            <% end %>
+            <%= message.recipient.name %>
+          <% else %>
+            <i class="fa fa-envelope fa-3x pull-right" aria-hidden="true"></i>
+            <%= message.recipient.email %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail clearfix">
+    <div class="pull-left">
+      <i class="fa fa-comment" aria-hidden="true"></i>&nbsp;
+    </div>
+    <%= markdown(message.body) -%>
+  </div>
+
+  <div class="detail clearfix">
+    <div class="pull-left">
+      <% if message.like_user(@current_user_id) %>
+        <button id="like-button" class="btn btn-default btn-xs decrement js-like-button" data-message-id="<%= message.id %>">
+          <%= image_tag "icon_heart_red.svg", :size => "14x14" %>
+          <span id="like-sum" class="js-like-sum">
+              <%= likes_counter message.likes %>
+            </span>
+        </button>
+      <% else %>
+        <button id="like-button" class="btn btn-default btn-xs increment js-like-button" data-message-id="<%= message.id %>">
+          <%= image_tag "icon_heart.svg", :size => "14x14" %>
+          <span id="like-sum" class="js-like-sum">
+              <%= likes_counter message.likes %>
+            </span>
+        </button>
+      <% end %>
+    </div>
+
+    <span class="pull-right">
+      <% if current_user.present? %>
+        <% if current_user.id == message.sender.id %>
+        <span class="label label-primary">Form Me</span>
+        <% end %>
+      <% if current_user.id == message.recipient.id %>
+        <span class="label label-danger">To Me</span>
+        <% end %>
+      <span class="hidden-xs"><%= l message.updated_at %></span>
+        (<%= distance_of_time_in_words_to_now(message.updated_at) %>)
+
+      <% if current_user.id == message.sender.id %>
+          &nbsp;
+        <%= link_to message, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?", disable_with: "<i class='fa fa-spinner fa-spin'></i>" } do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      <% end %>
+      <% end %>
+    </span>
+  </div>
+</div>

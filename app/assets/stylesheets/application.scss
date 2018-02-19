@@ -1,0 +1,334 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require_self
+ *= require_tree .
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-select";
+@import "toastr";
+
+#footer {
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f8f8;
+  padding: 12px 0;
+  margin-top: 20px;
+  font-size: 12px;
+
+  p.copyright {
+    font-size: 11px;
+    color: #aaa;
+    padding: 16px 42px;
+  }
+}
+
+.navbar-default {
+  background: transparent;
+  border-color: transparent;
+  z-index: 10;
+
+  .navbar-nav > li > a {
+    color: white;
+    font-size: 13px;
+  }
+
+  .navbar-brand {
+    color: white;
+  }
+
+  .navbar-toggle .icon-bar {
+    background-color: #000;
+  }
+
+}
+
+.navbar-devise {
+  background: #fff;
+  border-color: #fff;
+  z-index: 10;
+
+  .navbar-nav > li > a {
+    color: #222;
+    font-size: 13px;
+    line-height: 25px;
+  }
+
+  .navbar-brand {
+    color: #222;
+  }
+
+  .navbar-form {
+    padding-top: 5px;
+  }
+}
+
+// トップページのnavbarのドロップダウンがクリックされた時
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent;
+  color: #555;
+}
+
+// row-space類
+.row-space-top-0 {
+  margin-top: 0px;
+}
+
+.row-space-top-1 {
+  margin-top: 10px;
+}
+
+.row-space-top-2 {
+  margin-top: 15px;
+}
+
+.row-space-top-3 {
+  margin-top: 20px;
+}
+
+.row-space-top-4 {
+  margin-top: 25px;
+}
+
+.row-space-0 {
+  margin-bottom: 0px;
+}
+
+.row-space-1 {
+  margin-bottom: 10px;
+}
+
+.row-space-2 {
+  margin-bottom: 15px;
+}
+
+.row-space-3 {
+  margin-bottom: 20px;
+}
+
+.row-space-4 {
+  margin-bottom: 25px;
+}
+
+// プロフィール画像
+.profile-mini {
+  width: 19px !important;
+  height: 19px !important;
+}
+
+.profile-0 {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.profile-1 {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+.profile-2 {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+.profile-full {
+  width: 30% !important;
+  height: 80px !important;
+}
+
+@media (min-width: 992px) {
+  .profile-full {
+    width: 100% !important;
+    height: 180px !important;
+  }
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.vertification-checked:before {
+  content: "\f00c";
+  font-family: FontAwesome;
+  position: relative;
+  z-index: 100;
+  top: 2px;
+  font-size: 1.55em;
+  text-align: center;
+  width: 1.25em;
+  color: #00d1c1;
+}
+
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.sidebar-nav .navbar-default .navbar-nav > li > a {
+  color: #222;
+  font-size: 16px;
+}
+
+.sidebar-nav .navbar-default .navbar-nav > li {
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff
+}
+
+.sidebar-nav .navbar-default .navbar-nav > li:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.sidebar-nav .navbar-toggle {
+  background-color: #337ab7;
+}
+
+// dropzone.jsのcss
+@media (max-width: 768px) {
+  .dz-preview, .dz-processing, .dz-image-preview, .dz-error, .dz-complete {
+    margin: 10px 0 !important;
+    width: 100%;
+  }
+  .dropzone .dz-preview .dz-image {
+    width: 100%;
+  }
+  .dropzone .dz-preview .dz-image img {
+    height: 120px;
+  }
+}
+
+.dropzone .dz-preview .dz-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.dropzone.dz-started .dz-message {
+  display: block;
+}
+
+// listings/indexのcss
+a.sidebar-item {
+  font-size: 16px;
+  color: #222;
+}
+
+.sidebar-list li.active {
+  font-weight: bold;
+}
+
+.ul-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+li.panel-body {
+  border-top: 1px solid #eeeeee;
+}
+
+li.panel-body:first-child {
+  border-top: none;
+}
+
+span.listing-title {
+  font-size: 18px;
+}
+
+.row-table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.col-middle {
+  vertical-align: middle;
+  display: table-cell;
+  float: none;
+}
+
+.panel-list-img {
+  height: 61px;
+}
+
+.panel-list-img img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .row-table, .col-middle {
+    display: block;
+  }
+
+  .panel-list-img {
+    height: 170px;
+  }
+}
+
+// showページのcss
+.container-listing-show {
+  background-color: #fff;
+  border-bottom: 1px solid #dce0e0;
+}
+
+.panel-show {
+  border-radius: 0px;
+  border: none;
+}
+
+.panel-show .panel-heading {
+  background-color: rgba(60, 63, 64, 0.9);
+  color: #fff;
+  border-radius: 0px;
+  border-bottom: 0px;
+}
+
+.panel-show .panel-body {
+  border: 1px solid #eee;
+}
+
+.btn-wide {
+  width: 85%;
+}
+
+//showページのデスクトップcss
+@media (min-width: 992px) {
+  .panel-show {
+    position: inherit;
+    width: 296px;
+    z-index: 100;
+    margin-top: -62px;
+  }
+}
+
+body {
+  color: #222;
+  background-color: #F8F8F8;
+  font-family: "Kokoro", 游ゴシック, YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, sans-serif;
+}

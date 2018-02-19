@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <%= paginate @messages %>
+  </div>
+
+  <div class="row">
+    <div id="messages">
+      <% @messages.each_with_index do |message, i| %>
+        <% if @messages.size > 16 && i % 10 == 0 %>
+          <div class="col-lg-6 col-md-6">
+        <% end %>
+        <%= render 'messages/message', { message: message } %>
+        <% if @messages.size > 16 && i % 10 == 9 %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= paginate @messages %>
+</div>
+
+<%= content_for :page_javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).on('turbolinks:load', function() {
+      $('.selectpicker').selectpicker();
+    });
+
+    <% if user_signed_in? %>
+    $('#messages').on('click', '.js-like-button', function(e) {
+      e.preventDefault();
+
+      var $heart = $(this).find('img');
+      var $likeSum = $(this).find('.js-like-sum');
+      var $message_id = $(this).data('message-id');
+      like_function($message_id, $(this), $heart, $likeSum);
+    });
+
+    function like_function(id, button, heart, sum) {
+      button.removeClass('js-like-button');
+      if (button.hasClass('decrement')) {
+        $.ajax({url: '/likes/' + id, type: 'delete', data: {message_id: id, dataType: 'json'}}).done(function(data) {
+          button.removeClass('decrement').addClass('increment').addClass('js-like-button');
+          heart.attr('src', "<%= image_path('icon_heart.svg') %>");
+          sum.text(data['count']);
+        });
+      } else {
+        $.ajax({url: '/likes', type: 'post', data: {message_id: id, dataType: 'json'}}).done(function(data) {
+          button.removeClass('increment').addClass('decrement').addClass('js-like-button');
+          heart.attr('src', "<%= image_path('icon_heart_red.svg') %>");
+          sum.text(data['count']);
+        });
+      }
+    }
+
+    <% end %>
+  </script>
+<% end %>
