@@ -1,8 +1,4 @@
 module MessagesHelper
-  def likes_counter(likes)
-    likes.count
-  end
-
   def markdown(text)
     renderer = Redcarpet::Render::HTML.new(hard_wrap: true, filter_html: true)
     options = {

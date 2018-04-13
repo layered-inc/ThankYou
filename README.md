@@ -1,4 +1,5 @@
-# ThankYouCard Web Service
+# ThankYouCard Web Service [![Build Status](https://travis-ci.org/media-cf/ThankYou.svg?branch=master)](https://travis-ci.org/media-cf/ThankYou)
+
 ## メンバー同士で感謝の気持ちを伝え合うThankyou Card制度　WEB化してみました
 メンバー同士で感謝の気持ちを伝え合うサンキューカード／サンクスカードの仕組み
 （参考：　https://matome.naver.jp/odai/2146456539043542601　）

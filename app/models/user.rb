@@ -34,6 +34,8 @@ class User < ApplicationRecord
   has_many :messages, class_name: "Message", foreign_key: :recipient_id, inverse_of: :recipient, dependent: :destroy
   validates_associated :messages
 
+  validates :email, presence: true
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

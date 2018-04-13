@@ -1,0 +1,37 @@
+language: ruby
+
+rvm:
+- 2.4.3
+
+services:
+- postgresql
+
+bundler_args: "--without development --deployment"
+
+cache:
+  bundler: true
+  directories:
+  - node_modules
+  yarn: true
+
+before_install:
+- gem update --system
+- gem update bundler
+- nvm install node
+- node -v
+- npm i -g yarn
+- yarn
+
+before_script:
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.travis.yml config/database.yml
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+
+script:
+- bundle exec rspec spec
+
+notifications:
+  email: false
+  slack:
+    secure: E4fVDVi+H5M2UXiRxLDgGqVj0/5PO/TBhOVcmntwGDLrk+Il3lAiK4puBWlHfALy5adHkclvCutOWrtczyzpKKL3I6vSPhCj3CfGYh4MvIjFDkkG7ciyjs2n2JQb9EcoEYURHLiMataA+WTH2JJeRr/pveqzIKPs5VTOmCGZLo9NAM4F5MSdps3VSaiNC6wf7BdqfEsFnW+GyTz06dkEVDM9bkBhZEtuY+efvwvb3BjTksfNmnAgnn+EbyXsiVPjU2i9NakYEV5ZIn3NIw80Yo5Zn7GmT5VJYX7tVX1GL2IVgdhtSR+jKao8LBy58wEkMYdx5h68h+vv7rgc5rkOG6omHHnTb/vJt7XilCnFxWd8q7O+flNj61QTDWjucxxGwH/wCht723/0Yl/rhWKKJBo2n+Y7vzAAXIkvv5O/YFEjKomATNKy9JTjaK3cN4tj9/0fp11/WOaGwTjBNwg4T6AFmUchL5qPgINcXKuTFVeVmr1ylCS67PP+PNrV+9oimez6MSe8mzBM4gljOcjhHYIseT5xNXARgGHAUWTrq/tkIn8OwYDE5XGprXbiIBSRq3qhNXGgSXrpbUKHDWkxSKTEymp7OThxp1ih2jjz/9H55upWHrjknSFtHYWI3khE5Id7UKmKLd6gSaLRgQdpLqqzk1hbFC7zJOzNt9CdAgs=

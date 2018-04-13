@@ -10,9 +10,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.find_by(user_id: current_user.id, message_id: params[:message_id])
+    like = Like.find_by(user_id: current_user.id, message_id: params[:id])
     like.destroy
-    likes_count = Like.where(message_id: params[:message_id]).count
+    likes_count = Like.where(message_id: params[:id]).count
     render json: { count: likes_count }, status: :ok
   end
 end

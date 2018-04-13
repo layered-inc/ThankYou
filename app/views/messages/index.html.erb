@@ -41,7 +41,7 @@
     function like_function(id, button, heart, sum) {
       button.removeClass('js-like-button');
       if (button.hasClass('decrement')) {
-        $.ajax({url: '/likes/' + id, type: 'delete', data: {message_id: id, dataType: 'json'}}).done(function(data) {
+        $.ajax({url: '/likes/' + id, type: 'delete', data: { dataType: 'json'}}).done(function(data) {
           button.removeClass('decrement').addClass('increment').addClass('js-like-button');
           heart.attr('src', "<%= image_path('icon_heart.svg') %>");
           sum.text(data['count']);

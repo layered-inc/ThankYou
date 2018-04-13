@@ -45,14 +45,14 @@
         <button id="like-button" class="btn btn-default btn-xs decrement js-like-button" data-message-id="<%= message.id %>">
           <%= image_tag "icon_heart_red.svg", :size => "14x14" %>
           <span id="like-sum" class="js-like-sum">
-              <%= likes_counter message.likes %>
+              <%= message.likes.count %>
             </span>
         </button>
       <% else %>
         <button id="like-button" class="btn btn-default btn-xs increment js-like-button" data-message-id="<%= message.id %>">
           <%= image_tag "icon_heart.svg", :size => "14x14" %>
           <span id="like-sum" class="js-like-sum">
-              <%= likes_counter message.likes %>
+              <%= message.likes.count %>
             </span>
         </button>
       <% end %>
@@ -63,15 +63,15 @@
         <% if current_user.id == message.sender.id %>
         <span class="label label-primary">Form Me</span>
         <% end %>
-      <% if current_user.id == message.recipient.id %>
+        <% if current_user.id == message.recipient.id %>
         <span class="label label-danger">To Me</span>
         <% end %>
-      <span class="hidden-xs"><%= l message.updated_at %></span>
+        <span class="hidden-xs"><%= l message.updated_at %></span>
         (<%= distance_of_time_in_words_to_now(message.updated_at) %>)
 
-      <% if current_user.id == message.sender.id %>
+        <% if current_user.id == message.sender.id %>
           &nbsp;
-        <%= link_to message, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?", disable_with: "<i class='fa fa-spinner fa-spin'></i>" } do %>
+          <%= link_to message, method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?", disable_with: "<i class='fa fa-spinner fa-spin'></i>" } do %>
           <i class="fa fa-trash"></i>
         <% end %>
       <% end %>

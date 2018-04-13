@@ -37,3 +37,8 @@
 vendor/
 /public/assets/
 /bundle_bin/*
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+coverage

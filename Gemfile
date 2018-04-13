@@ -47,21 +47,31 @@ gem 'bootstrap-select-wrapper-rails'
 gem "font-awesome-rails"
 gem 'kaminari'
 gem 'redcarpet'
-gem 'redis', '~> 3.0'
 gem 'cancancan'
 gem 'rails_admin'
 gem 'bootsnap', require: false
+gem "redis", "~> 4.0"
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'bullet'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'debase'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'ruby-debug-ide'
   gem 'selenium-webdriver'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'launchy'
+  gem 'timecop'
+  gem 'simplecov'
 end
 
 group :development do
@@ -82,6 +92,7 @@ end
 group :production do
   gem 'pg', '~> 0.21.0'
   gem 'rails_12factor'
+  gem 'google-analytics-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

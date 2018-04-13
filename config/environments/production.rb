@@ -13,6 +13,7 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
@@ -96,4 +97,6 @@ Rails.application.configure do
 
   config.web_socket_server_url = ENV['WEB_SOCKET_SERVER_URL']
   config.action_cable.allowed_request_origins = [/https?:\/\/.*/]
+
+  GA.tracker = "UA-117510519-1"
 end
