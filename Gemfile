@@ -10,7 +10,7 @@ end
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
 gem 'rails-i18n'
 
 # Use Puma as the app server
@@ -50,6 +50,7 @@ gem 'redcarpet'
 gem 'redis', '~> 3.0'
 gem 'cancancan'
 gem 'rails_admin'
+gem 'bootsnap', require: false
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -65,11 +66,12 @@ end
 
 group :development do
   gem 'annotate'
-  gem "better_errors"
+  gem 'better_errors'
   gem 'bullet'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rails-footnotes'
+  gem 'listen'
+  gem 'rails-footnotes', git: 'https://github.com/rikanu/rails-footnotes.git'
   gem 'rails_best_practices'
+
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
