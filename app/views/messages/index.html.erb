@@ -3,17 +3,21 @@
     <%= paginate @messages %>
   </div>
 
-  <div class="row">
-    <div id="messages">
+  <div id="messages">
+    <div class="row row-flex row-flex-wrap">
       <% @messages.each_with_index do |message, i| %>
-        <% if @messages.size > 16 && i % 10 == 0 %>
-          <div class="col-lg-6 col-md-6">
-        <% end %>
-        <%= render 'messages/message', { message: message } %>
-        <% if @messages.size > 16 && i % 10 == 9 %>
-          </div>
-        <% end %>
+        <div class="col-lg-4 col-md-4 flex-col">
+          <%= render 'messages/message', { message: message } %>
+        </div>
       <% end %>
+      <%# if @messages.size > 16 && i % 10 == 0 %>
+      <!--          <div class="col-lg-6 col-md-6">-->
+      <%# end %>
+      <%#= render 'messages/message', { message: message } %>
+      <%# if @messages.size > 16 && i % 10 == 9 %>
+      <!--          </div>-->
+      <%# end %>
+      <%# end %>
     </div>
   </div>
 </div>
@@ -41,7 +45,7 @@
     function like_function(id, button, heart, sum) {
       button.removeClass('js-like-button');
       if (button.hasClass('decrement')) {
-        $.ajax({url: '/likes/' + id, type: 'delete', data: { dataType: 'json'}}).done(function(data) {
+        $.ajax({url: '/likes/' + id, type: 'delete', data: {dataType: 'json'}}).done(function(data) {
           button.removeClass('decrement').addClass('increment').addClass('js-like-button');
           heart.attr('src', "<%= image_path('icon_heart.svg') %>");
           sum.text(data['count']);

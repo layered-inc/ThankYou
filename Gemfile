@@ -58,8 +58,6 @@ group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'debase'
-  gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'ruby-debug-ide'
   gem 'selenium-webdriver'
 end
@@ -72,12 +70,13 @@ group :test do
   gem 'launchy'
   gem 'timecop'
   gem 'simplecov'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'annotate'
   gem 'better_errors'
-  gem 'bullet'
   gem 'listen'
   gem 'rails-footnotes', git: 'https://github.com/rikanu/rails-footnotes.git'
   gem 'rails_best_practices'

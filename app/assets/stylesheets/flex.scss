@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+}
+
+.row-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex: 1 1 auto;
+  > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex: 1 1 auto;
+  }
+}
+
+.row-flex-wrap {
+  -webkit-flex-flow: row wrap;
+  align-content: flex-start;
+  flex: 0;
+}
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+  margin: -.2px;
+  /* hack adjust for wrapping */
+}
+
+.flex-col {
+  display: flex;
+  display: -webkit-flex;
+  flex: 1 100%;
+  flex-flow: column nowrap;
+}
+
+.flex-grow {
+  display: flex;
+  -webkit-flex: 2;
+  flex: 2;
+}

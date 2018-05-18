@@ -2,7 +2,7 @@
 #
 # Table name: messages
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  sender_id    :integer
 #  recipient_id :integer
 #  body         :text

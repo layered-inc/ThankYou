@@ -10,3 +10,10 @@ ja:
         body: 内容
         sender: 送信者
         recipient: 受信者
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

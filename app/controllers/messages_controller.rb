@@ -29,10 +29,11 @@ class MessagesController < ApplicationController
     # ActionCable.server.broadcast 'message_channel', message: render_message(@message) if @message.save!
 
     if @message.save!
-      # create.js.erb　が実行される
-      respond_to do |format|
-        format.js
-      end
+      redirect_to messages_path
+      # # create.js.erb　が実行される
+      # respond_to do |format|
+      #   format.js
+      # end
     end
   end
 
