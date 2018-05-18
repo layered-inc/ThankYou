@@ -28,6 +28,10 @@ class Message < ApplicationRecord
     where(sender_id: user_id)
   end
 
+  scope :date_limit, ->(date) do
+    where("created_at <= ?", date)
+  end
+
   scope :recipient_messages, ->(user_id) do
     where(recipient_id: user_id)
   end

@@ -62,7 +62,7 @@ class MessagesController < ApplicationController
 
   def set_messages
     @current_user_id = current_user&.id
-    # @messages = Message.send_messages(current_user).includes(:sender, :recipient).order('updated_at DESC').page params[:page]
-    @messages = Message.includes(:sender, :recipient).order('updated_at DESC').page params[:page]
+    @messages = Message.send_messages(current_user).or(Message.date_limit('20180430')).includes(:sender, :recipient).order('updated_at DESC').page params[:page]
+    # @messages = Message.includes(:sender, :recipient).order('updated_at DESC').page params[:page]
   end
 end

@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  config.excluded_models = %w[ActiveStorage::Blob ActiveStorage::Attachment]
 
   ### Popular gems integration
 
