@@ -15,8 +15,8 @@
 
 <%= form_tag search_messages_path, :method => 'get', :class => 'navbar-form navbar-left' do %>
   <div class="form-group">
-    <%= select_tag :searching_user_id,
-      options_for_select(option, params[:searching_user_id]),
+    <%= select_tag :a_user_id,
+      options_for_select(option, params[:a_user_id]),
       { prompt: "メッセージ検索", class: "form-control selectpicker", data: { "live-search": true } }
     %>
   </div>

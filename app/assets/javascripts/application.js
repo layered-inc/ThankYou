@@ -18,4 +18,6 @@
 //= require jquery.validate
 //= require jquery.validate.localization/messages_ja
 //= require toastr
+//= require infinite-scroll/dist/infinite-scroll.pkgd
+//= require masonry-layout/dist/masonry.pkgd
 //= require_tree .

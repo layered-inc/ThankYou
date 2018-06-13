@@ -1,39 +1,67 @@
 <div class="container-fluid">
-  <div class="text-center">
-    <%= paginate @messages %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    あなたの<strong>感謝の気持ち</strong>をください♡
   </div>
 
-  <div id="messages">
-    <div class="row row-flex row-flex-wrap">
-      <% @messages.each_with_index do |message, i| %>
-        <div class="col-lg-4 col-md-4 flex-col">
-          <%= render 'messages/message', { message: message } %>
-        </div>
-      <% end %>
-      <%# if @messages.size > 16 && i % 10 == 0 %>
-      <!--          <div class="col-lg-6 col-md-6">-->
-      <%# end %>
-      <%#= render 'messages/message', { message: message } %>
-      <%# if @messages.size > 16 && i % 10 == 9 %>
-      <!--          </div>-->
-      <%# end %>
-      <%# end %>
+  <% if (link_to_next_page @messages, 'next') != nil %>
+    <div class="pagination">
+      <%= link_to_next_page @messages, 'next' %>
     </div>
-  </div>
-</div>
+  <% end %>
 
-<div class="text-center">
-  <%= paginate @messages %>
+  <div id="messages" class="row row-flex row-flex-wrap">
+    <% @messages.each_with_index do |message, i| %>
+      <div class="col-lg-4 col-md-6 col-sm-6 flex-col grid-item">
+        <%= render 'messages/message', { message: message } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="page-load-status">
+    <div class="loader-ellips infinite-scroll-request">
+      <span class="loader-ellips__dot"></span>
+      <span class="loader-ellips__dot"></span>
+      <span class="loader-ellips__dot"></span>
+      <span class="loader-ellips__dot"></span>
+    </div>
+    <p class="infinite-scroll-last">End of content</p>
+    <p class="infinite-scroll-error">No more pages to load</p>
+  </div>
 </div>
 
 <%= content_for :page_javascript do %>
   <script type="text/javascript" charset="utf-8">
+    var $messages = $('#messages');
+    var $grid = $messages.masonry({
+      itemSelector: '.grid-item',
+      percentPosition: true,
+      stagger: 30,
+      // nicer reveal transition
+      visibleStyle: {transform: 'translateY(0)', opacity: 1},
+      hiddenStyle: {transform: 'translateY(100px)', opacity: 0},
+    });
+
+    // get Masonry instance
+    var msnry = $grid.data('masonry');
+
+    if ($('.pagination').length > 0) {
+      $grid.infiniteScroll({
+        path: 'a[rel=next]',
+        append: '.col-lg-4.col-md-6.col-sm-6.flex-col.grid-item',
+        history: false,
+        hideNav: '.pagination',
+        outlayer: msnry,
+        status: '.page-load-status',
+      });
+    }
+
     $(document).on('turbolinks:load', function() {
       $('.selectpicker').selectpicker();
     });
 
     <% if user_signed_in? %>
-    $('#messages').on('click', '.js-like-button', function(e) {
+    $messages.on('click', '.js-like-button', function(e) {
       e.preventDefault();
 
       var $heart = $(this).find('img');

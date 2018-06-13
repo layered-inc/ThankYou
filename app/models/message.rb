@@ -19,7 +19,7 @@ class Message < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-  max_paginates_per 20
+  max_paginates_per 15
 
   validates :recipient, presence: true
   validates :body, presence: true

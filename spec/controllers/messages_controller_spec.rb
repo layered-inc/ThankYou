@@ -25,7 +25,7 @@ RSpec.describe MessagesController, type: :controller do
     it "returns a success response" do
       message = Message.create! valid_attributes
 
-      get :search, params: { button: 'sender', searching_user_id: sender.id }
+      get :search, params: { button: 'sender', a_user_id: sender.id }
       expect(response).to be_successful
     end
   end
