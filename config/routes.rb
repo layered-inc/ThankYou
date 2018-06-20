@@ -55,6 +55,10 @@ Rails.application.routes.draw do
   #   root to: "devise/sessions#new"
   # end
 
+  resources :users do
+    get :personality_insights
+  end
+
   resources :messages do
     collection do
       get :search

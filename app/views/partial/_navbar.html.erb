@@ -15,7 +15,6 @@
     </div>
 
     <nav id="bs-navbar" class="collapse navbar-collapse">
-
       <% if controller? 'messages' %>
         <%= render 'partial/filter', { users: @users } %>
       <% end %>
@@ -37,9 +36,10 @@
               <% else %>
                 <%= current_user.email %>
               <% end %>
-              <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+              <span class="caret"></span>
+            </a>
 
+            <ul class="dropdown-menu">
               <li><%= link_to 'プロフィール編集', edit_user_registration_path %></li>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
