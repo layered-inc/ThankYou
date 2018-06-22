@@ -37,6 +37,7 @@
       <i class="fa fa-comment" aria-hidden="true"></i>&nbsp;
     </div>
     <%= markdown(message.body) -%>
+    <%#= simple_format(message.body).html_safe -%>
   </div>
 
   <div class="detail clearfix">

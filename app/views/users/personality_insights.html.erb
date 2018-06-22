@@ -1,8 +1,4 @@
 <style>
-  #profile pre {
-    max-height: 600px;
-  }
-
   #sunburstChart svg {
     border: 1px solid black;
   }
@@ -17,11 +13,39 @@
 
 <div class="modal-body">
   <div class="row">
-    <div class="col-sm-4 col-xs-12">
-      <div id="profile" data-profile="<%= @re %>"></div>
-    </div>
-    <div class="col-sm-8 col-xs-12">
+    <div id="profile" data-profile="<%= @re %>" class="hide"></div>
+    <div class="col-xs-12">
       <div id="sunburstChart"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <dl>
+        <% @re_obj['consumption_preferences'].each do |consumption_preference| %>
+          <dt><%= consumption_preference['name'] %></dt>
+          <dd>
+            <ul class="list-unstyled">
+              <% sorted_cps = consumption_preference['consumption_preferences'].sort_by { |hsh| hsh['score'] } %>
+              <% sorted_cps.reverse.each do |cp| %>
+                <% if cp['score'] == 1.0 %>
+                  <li class="text-primary">
+                    <%= cp['name'] %> <i class="fa fa-check" aria-hidden="true"></i>
+                  </li>
+                <% elsif cp['score'] == 0.0 %>
+                  <li class="text-danger">
+                    <%= cp['name'] %> <i class="fa fa-times" aria-hidden="true"></i>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= cp['name'] %> <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </dd>
+        <% end %>
+      </dl>
     </div>
   </div>
 </div>

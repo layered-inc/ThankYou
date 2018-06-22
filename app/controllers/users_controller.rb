@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       ActiveRecord::Base.transaction do
         # Fetch Request
         res = http.request(req)
+        @re_obj = JSON.parse(res.body)
         @re = res.body.to_s.force_encoding("UTF-8")
         @user = User.find(params[:user_id])
       end

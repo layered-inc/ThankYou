@@ -7,7 +7,7 @@ module MessagesHelper
       fenced_code_blocks: true,
       lax_html_blocks: true,
       strikethrough: true,
-      superscript: true,
+      superscript: false,
       tables: true,
       space_after_headers: true,
       hard_wrap: true,
