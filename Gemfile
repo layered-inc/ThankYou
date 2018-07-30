@@ -51,6 +51,7 @@ gem 'cancancan'
 gem 'rails_admin'
 gem 'bootsnap', require: false
 gem "redis", "~> 4.0"
+gem 'rack-attack'
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
