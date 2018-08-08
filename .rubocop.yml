@@ -70,6 +70,12 @@ Lint/UselessAccessModifier:
   Enabled: false
 Style/MixinGrouping:
   Enabled: false
+Performance/StartWith:
+  Enabled: true
+Performance/EndWith:
+  Enabled: true
+Performance/RegexpMatch:
+  Enabled: true
 
 # The following should be re-enabled for ruby 3 update
 Style/StringLiterals:

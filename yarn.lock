@@ -27,9 +27,9 @@ infinite-scroll@^3.0.4:
     ev-emitter "^1.1.0"
     fizzy-ui-utils "^2.0.5"
 
-masonry-layout@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.1.tgz#1c878b85a88866ba6b39b9bd0e162348aed7ce13"
+masonry-layout@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.2.tgz#d57b44af13e601bfcdc423f1dd8348b5524de348"
   dependencies:
     get-size "^2.0.2"
     outlayer "^2.1.0"
