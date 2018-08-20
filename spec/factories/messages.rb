@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :message do
     association :user
-    body 'test'
+    body { 'test' }
 
     factory :invalid_message do
-      body nil
+      body { nil }
     end
   end
 end

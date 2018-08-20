@@ -63,7 +63,7 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (9.0.0)
-    autoprefixer-rails (9.1.1)
+    autoprefixer-rails (9.1.2)
       execjs
     bcrypt (3.1.12)
     better_errors (2.4.0)
@@ -121,10 +121,10 @@ GEM
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_bot (4.10.0)
+    factory_bot (4.11.0)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.10.0)
-      factory_bot (~> 4.10.0)
+    factory_bot_rails (4.11.0)
+      factory_bot (~> 4.11.0)
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -242,7 +242,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_admin (1.4.0)
+    rails_admin (1.4.1)
       builder (~> 3.1)
       coffee-rails (~> 4.0)
       font-awesome-rails (>= 3.0, < 5)
@@ -318,6 +318,8 @@ GEM
     selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sentry-raven (2.7.4)
+      faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.11.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
@@ -409,6 +411,7 @@ DEPENDENCIES
   ruby-debug-ide
   sass-rails (~> 5.0)
   selenium-webdriver
+  sentry-raven
   shoulda-matchers
   simplecov
   spring
@@ -423,4 +426,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.2
+   1.16.3

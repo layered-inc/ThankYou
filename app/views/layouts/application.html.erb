@@ -12,9 +12,6 @@
   <%= analytics_init if Rails.env.production? %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-  <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet"/>
-
   <!-- Latest compiled and minified JavaScript -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -43,6 +40,9 @@
   <% end  %>
   <% end %>
 </script>
+
+<script src="https://cdn.logrocket.io/LogRocket.min.js" crossorigin="anonymous"></script>
+<script>window.LogRocket && window.LogRocket.init('3z5ovv/thankyou');</script>
 
 </body>
 </html>
