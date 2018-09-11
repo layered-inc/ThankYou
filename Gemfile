@@ -38,8 +38,8 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'auth-hash-fixes'
-# gem 'omniauth-slack'
+# gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'auth-hash-fixes'
+gem 'omniauth-slack'
 # https://github.com/CodeSeven/toastr
 
 gem 'bootstrap-select-rails'
@@ -59,8 +59,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'debase'
-  gem 'ruby-debug-ide'
+  # gem 'debase'
+  # gem 'ruby-debug-ide'
   gem 'selenium-webdriver'
 end
 
