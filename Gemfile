@@ -10,7 +10,7 @@ end
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.1'
 gem 'rails-i18n'
 
 # Use Puma as the app server
@@ -53,6 +53,8 @@ gem 'bootsnap', require: false
 gem "redis", "~> 4.0"
 gem 'rack-attack'
 gem "sentry-raven"
+
+gem 'chart-js-rails'
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver

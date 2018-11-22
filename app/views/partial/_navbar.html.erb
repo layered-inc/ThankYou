@@ -14,7 +14,7 @@
       </a>
     </div>
 
-    <nav id="bs-navbar" class="collapse navbar-collapse">
+    <div id="bs-navbar" class="collapse navbar-collapse">
       <% if controller? 'messages' %>
         <%= render 'partial/filter', { users: @users } %>
       <% end %>
@@ -50,7 +50,7 @@
           <li><%= link_to 'ログイン', new_user_session_path %></li>
         <% end %>
       </ul>
-    </nav>
+    </div>
   </div>
 </nav>
 

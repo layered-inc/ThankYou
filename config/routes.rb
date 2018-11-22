@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get :personality_insights
+    get :dashboards
   end
 
   resources :messages do

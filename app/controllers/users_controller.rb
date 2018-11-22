@@ -24,6 +24,35 @@ class UsersController < ApplicationController
     render layout: false
   end
 
+  def dashboards
+    @send_label = []
+    @send_data = []
+    @recipient_label = []
+    @recipient_data = []
+
+    @recipient_nums = 0
+    @send_nums = 0
+
+    if params[:user_id].present?
+      Message.recipient_messages(params[:user_id]).limit(8).group(:sender_id).order('count_all desc').count.each do |message|
+        @recipient_label << User.find(message[0]).name
+        @recipient_data << message[1]
+      end
+
+      @recipient_nums = Message.recipient_messages(params[:user_id]).count
+
+      Message.send_messages(params[:user_id]).limit(8).group(:recipient_id).order('count_all desc').count.each do |message|
+        @send_label << User.find(message[0]).name
+        @send_data << message[1]
+      end
+
+      @send_nums = Message.send_messages(params[:user_id]).count
+    end
+
+    render layout: false
+  end
+
+
   private
 
   def make_request(message_text)

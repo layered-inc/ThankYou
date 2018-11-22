@@ -42,12 +42,15 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def self.from_omniauth(auth)
-    user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", auth.uid, auth.provider, auth.info.email).first || User.new
+    if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", auth.uid, auth.provider, auth.info.email).first)
+    else
+      user = User.new
+      user.password = Devise.friendly_token[0, 20]
+    end
 
     user.provider = auth.provider
     user.uid = auth.uid
     user.email = auth.info.email
-    user.password = Devise.friendly_token[0, 20]
     user.name = auth.info.name # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
     user.team = auth.info.team

@@ -6,6 +6,10 @@
       <%= link_to user_personality_insights_path(params[:a_user_id]), remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
         <i class="fa fa-search" aria-hidden="true"></i>
       <% end %>
+
+      <%= link_to user_dashboards_path(params[:a_user_id]), remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
+        <i class="fa fa-bar-chart" aria-hidden="true"></i>
+      <% end %>
     <% else %>
       ♡
     <% end %>
