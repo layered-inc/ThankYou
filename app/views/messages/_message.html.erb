@@ -37,20 +37,19 @@
       <i class="fa fa-comment" aria-hidden="true"></i>&nbsp;
     </div>
     <%= markdown(message.body) -%>
-    <%#= simple_format(message.body).html_safe -%>
   </div>
 
   <div class="detail clearfix">
     <div class="pull-left">
       <% if message.like_user(@current_user_id) %>
-        <button id="like-button" class="btn btn-default btn-xs decrement js-like-button" data-message-id="<%= message.id %>">
+        <button id="like-button" class="btn btn-default btn-xs decrement js-like-button" data-message-id="<%= message.id %>" data-toggle="tooltip" data-placement="top" title="<%= message.likes_users_name %>">
           <%= image_tag "icon_heart_red.svg", :size => "14x14" %>
           <span id="like-sum" class="js-like-sum">
               <%= message.likes.count %>
             </span>
         </button>
       <% else %>
-        <button id="like-button" class="btn btn-default btn-xs increment js-like-button" data-message-id="<%= message.id %>">
+        <button id="like-button" class="btn btn-default btn-xs increment js-like-button" data-message-id="<%= message.id %>" data-toggle="tooltip" data-placement="top" title="<%= message.likes_users_name %>">
           <%= image_tag "icon_heart.svg", :size => "14x14" %>
           <span id="like-sum" class="js-like-sum">
               <%= message.likes.count %>
@@ -77,6 +76,13 @@
         <% end %>
       <% end %>
     </span>
+
     <div class="clearfix"></div>
   </div>
 </div>
+
+<script>
+  $(function() {
+    $('.js-like-button').tooltip();
+  });
+</script>

@@ -9,19 +9,19 @@
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
-          <%= f.label :Eメール %><br/>
+          <%= f.label 'Eメール' %><br/>
           <%= f.email_field :email, class: 'form-control', placeholder: 'Eメール', autofocus: true %>
         </div>
 
         <div class="form-group">
-          <%= f.label :パスワード %><br/>
+          <%= f.label 'パスワード' %><br/>
           <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード', autocomplete: 'off' %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
           <div class="form-group">
             <%= f.check_box :remember_me %>
-            <%= f.label :ログイン情報を記憶させますか？, for: 'user_remember_me' %>
+            <%= f.label 'ログイン情報を記憶させますか？', for: 'user_remember_me' %>
           </div>
         <% end -%>
 

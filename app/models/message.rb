@@ -48,4 +48,8 @@ class Message < ApplicationRecord
   def like_user(user_id)
     likes.find_by(user_id: user_id)
   end
+
+  def likes_users_name
+    User.where(id: self.likes.pluck(:user_id)).pluck(:name).join(', ')
+  end
 end
