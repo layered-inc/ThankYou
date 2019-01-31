@@ -8,8 +8,7 @@ class MessagesController < ApplicationController
 
   def search
     # a_user_id にするのは 検索urlの場合は パラメータのpageの前に来ないとInfiniteScrollはうまく作動したため
-    @user_id = params[:a_user_id] || nil
-    if @user_id.present?
+    if (@user_id = params[:a_user_id])
       if params[:button] == 'sender'
         @messages = @messages.send_messages(@user_id)
       else
@@ -49,7 +48,34 @@ class MessagesController < ApplicationController
     end
   end
 
+  # def full_text
+  #   message = Message.all.pluck(:body)
+  #
+  #   @messages = shellesc(message.join(',').delete("'").delete('"'))
+  #
+  #   render layout: false
+  # end
+
   private
+
+  # def shellesc(str, opt = {})
+  #   str = str.dup
+  #   if opt[:erace]
+  #     opt[:erace] = [opt[:erace]] unless Array === opt[:erace]
+  #     opt[:erace].each do |i|
+  #       case i
+  #       when :ctrl then
+  #         str.gsub!(/[\x00-\x08\x0a-\x1f\x7f]/, '')
+  #       when :hyphen then
+  #         str.gsub!(/^-+/, '')
+  #       else
+  #         str.gsub!(i, '')
+  #       end
+  #     end
+  #   end
+  #   str.gsub!(/[\!\"\$\&\'\(\)\*\,\:\;\<\=\>\?\[\\\]\^\`\{\|\}\t ]/, '\\\\\\&')
+  #   str
+  # end
 
   def massage_params
     params.require(:message).permit(:body, :sender_id)
@@ -65,7 +91,7 @@ class MessagesController < ApplicationController
 
   def set_messages
     @current_user_id = current_user&.id
-    @messages = Message.send_messages(current_user).or(Message.date_limit('20180731')).includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
-    # @messages = Message.includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
+    # @messages = Message.send_messages(current_user).or(Message.date_limit('20180731')).includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
+    @messages = Message.includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
   end
 end

@@ -25,7 +25,7 @@ class Message < ApplicationRecord
   validates :body, presence: true
 
   scope :send_messages, ->(user_id) do
-    where(sender_id: user_id)
+    where(sender_id: user_id).where.not(recipient_id: nil)
   end
 
   scope :date_limit, ->(date) do
@@ -33,7 +33,7 @@ class Message < ApplicationRecord
   end
 
   scope :recipient_messages, ->(user_id) do
-    where(recipient_id: user_id)
+    where(recipient_id: user_id).where.not(sender_id: nil)
   end
 
   # scopeは長い条件文を省略するために使用

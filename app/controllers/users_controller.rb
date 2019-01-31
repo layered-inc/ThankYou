@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-  require 'net/http'
-  require 'net/https'
-
   def personality_insights
-    message_text = Message.send_messages(params[:user_id]).pluck(:body).join
+    message_text = Message.send_messages(params[:id]).pluck(:body).join
     return false if message_text.blank?
 
     http, req = make_request(message_text)
@@ -15,7 +12,7 @@ class UsersController < ApplicationController
         res = http.request(req)
         @re_obj = JSON.parse(res.body)
         @re = res.body.to_s.force_encoding("UTF-8")
-        @user = User.find(params[:user_id])
+        @user = User.find(params[:id])
       end
     rescue StandardError => e
       LOG.debug 'Error Exception!', e
@@ -33,20 +30,25 @@ class UsersController < ApplicationController
     @recipient_nums = 0
     @send_nums = 0
 
-    if params[:user_id].present?
-      Message.recipient_messages(params[:user_id]).limit(8).group(:sender_id).order('count_all desc').count.each do |message|
-        @recipient_label << User.find(message[0]).name
+
+    if (user_id = params[:id])
+      Message.recipient_messages(user_id).limit(8).group(:sender_id).order('count_all desc').count.each do |message|
+        next unless (user = User.find_by(id: message[0]))
+
+        @recipient_label << user.name
         @recipient_data << message[1]
       end
 
-      @recipient_nums = Message.recipient_messages(params[:user_id]).count
+      @recipient_nums = Message.recipient_messages(user_id).count
 
-      Message.send_messages(params[:user_id]).limit(8).group(:recipient_id).order('count_all desc').count.each do |message|
-        @send_label << User.find(message[0]).name
+      Message.send_messages(user_id).limit(8).group(:recipient_id).order('count_all desc').count.each do |message|
+        next unless (user = User.find_by(id: message[0]))
+
+        @send_label << user.name
         @send_data << message[1]
       end
 
-      @send_nums = Message.send_messages(params[:user_id]).count
+      @send_nums = Message.send_messages(user_id).count
     end
 
     render layout: false
@@ -56,6 +58,9 @@ class UsersController < ApplicationController
   private
 
   def make_request(message_text)
+    require 'net/http'
+    require 'net/https'
+
     uri = URI(ENV['PERSONALITY_ENDPOINT'])
 
     http = Net::HTTP.new(uri.host, uri.port)

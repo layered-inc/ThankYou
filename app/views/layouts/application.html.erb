@@ -23,7 +23,9 @@
 
 <%= render 'partial/navbar' %>
 
-<%= yield %>
+<section class="clearfix homeBanner" style="background-image: url('<%= asset_url("back.png") %>');">
+  <%= yield %>
+</section>
 
 <!-- Footer -->
 <%= render partial: "layouts/footer" %>
@@ -40,10 +42,6 @@
   <% end  %>
   <% end %>
 </script>
-
-<!--<script src="https://cdn.logrocket.io/LogRocket.min.js" crossorigin="anonymous"></script>-->
-<!--<script>window.LogRocket && window.LogRocket.init('3z5ovv/thankyou');</script>-->
-
 
 </body>
 </html>

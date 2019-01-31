@@ -14,7 +14,17 @@
 #                               PUT      /users(.:format)                                                                         registrations#update
 #                               DELETE   /users(.:format)                                                                         registrations#destroy
 #                               POST     /users(.:format)                                                                         registrations#create
-#                          root GET      /                                                                                        devise/sessions#new
+#                          root GET      /                                                                                        messages#index
+#     personality_insights_user GET      /users/:id/personality_insights(.:format)                                                users#personality_insights
+#               dashboards_user GET      /users/:id/dashboards(.:format)                                                          users#dashboards
+#                         users GET      /users(.:format)                                                                         users#index
+#                               POST     /users(.:format)                                                                         users#create
+#                      new_user GET      /users/new(.:format)                                                                     users#new
+#                     edit_user GET      /users/:id/edit(.:format)                                                                users#edit
+#                          user GET      /users/:id(.:format)                                                                     users#show
+#                               PATCH    /users/:id(.:format)                                                                     users#update
+#                               PUT      /users/:id(.:format)                                                                     users#update
+#                               DELETE   /users/:id(.:format)                                                                     users#destroy
 #               search_messages GET      /messages/search(.:format)                                                               messages#search
 #                      messages GET      /messages(.:format)                                                                      messages#index
 #                               POST     /messages(.:format)                                                                      messages#create
@@ -26,13 +36,13 @@
 #                               DELETE   /messages/:id(.:format)                                                                  messages#destroy
 #                         likes POST     /likes(.:format)                                                                         likes#create
 #                          like DELETE   /likes/:id(.:format)                                                                     likes#destroy
-#                                        /cable                                                                                   #<ActionCable::Server::Base:0x00007ff233f94f70 @mutex=#<Monitor:0x00007ff233f94f20 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x00007ff233f94ed0>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
+#                                        /cable                                                                                   #<ActionCable::Server::Base:0x00007fc7f7ca3bb0 @mutex=#<Monitor:0x00007fc7f7ca3b88 @mon_owner=nil, @mon_count=0, @mon_mutex=#<Thread::Mutex:0x00007fc7f7ca3b38>>, @pubsub=nil, @worker_pool=nil, @event_loop=nil, @remote_connections=nil>
 #            rails_service_blob GET      /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #     rails_blob_representation GET      /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #            rails_disk_service GET      /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
 #     update_rails_disk_service PUT      /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
 #          rails_direct_uploads POST     /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
-#
+# 
 # Routes for RailsAdmin::Engine:
 #   dashboard GET         /                                      rails_admin/main#dashboard
 #       index GET|POST    /:model_name(.:format)                 rails_admin/main#index
@@ -44,7 +54,6 @@
 #        edit GET|PUT     /:model_name/:id/edit(.:format)        rails_admin/main#edit
 #      delete GET|DELETE  /:model_name/:id/delete(.:format)      rails_admin/main#delete
 # show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
-#
 
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -56,13 +65,17 @@ Rails.application.routes.draw do
   # end
 
   resources :users do
-    get :personality_insights
-    get :dashboards
+    member do
+      get :personality_insights
+      get :dashboards
+    end
   end
 
   resources :messages do
     collection do
       get :search
+      # get :full_text
+      # get :message_cloud
     end
   end
 
