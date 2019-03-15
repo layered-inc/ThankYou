@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.1'
+ruby '2.6.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -7,10 +7,13 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'rails', '~> 5.2'
+
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
-gem 'rails', '~> 5.2.1'
 gem 'rails-i18n'
 
 # Use Puma as the app server
@@ -96,6 +99,7 @@ group :production do
   gem 'pg', '~> 0.21.0'
   gem 'rails_12factor'
   gem 'google-analytics-rails'
+  gem 'puma_worker_killer'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
