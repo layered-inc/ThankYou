@@ -17,6 +17,8 @@ class Message < ApplicationRecord
   belongs_to :sender, foreign_key: :sender_id, class_name: 'User', inverse_of: :messages
   belongs_to :recipient, foreign_key: :recipient_id, class_name: 'User', inverse_of: :messages
 
+  has_rich_text :body
+
   has_many :likes, dependent: :destroy
 
   max_paginates_per 15

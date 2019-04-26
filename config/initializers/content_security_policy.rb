@@ -6,13 +6,14 @@
 
 # Rails.application.config.content_security_policy do |policy|
 #   policy.default_src :self, :https
-#   policy.font_src :self, :https, :data
-#   policy.img_src :self, :https, :data
-#   policy.object_src :none
-#   policy.script_src :self, :https, :unsafe_inline, 'https://www.google-analytics.com'
-#   policy.style_src :self, :https, :unsafe_inline
-#   policy.connect_src :self, :https, 'http://localhost:3000/cable', 'ws://0.0.0.0:3000/cable', 'wss://mcf-thank-you.herokuapp.com/cable'
-#
+#   policy.font_src    :self, :https, :data
+#   policy.img_src     :self, :https, :data
+#   policy.object_src  :none
+#   policy.script_src  :self, :https
+#   policy.style_src   :self, :https
+#   # If you are using webpack-dev-server then specify webpack-dev-server host
+#   policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
 # end

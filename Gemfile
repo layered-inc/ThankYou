@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.2'
+ruby '2.6.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -7,7 +7,8 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2'
+# gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0.0.rc1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,7 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -49,15 +50,18 @@ gem 'bootstrap-select-rails'
 gem 'bootstrap-select-wrapper-rails'
 gem "font-awesome-rails"
 gem 'kaminari'
-gem 'redcarpet'
+# gem 'redcarpet'
 gem 'cancancan'
-gem 'rails_admin'
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 gem 'bootsnap', require: false
 gem "redis", "~> 4.0"
 gem 'rack-attack'
 gem "sentry-raven"
 
 gem 'chart-js-rails'
+
+gem 'webpacker'
+gem 'image_processing'
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
@@ -67,6 +71,7 @@ group :development, :test do
   # gem 'debase'
   # gem 'ruby-debug-ide'
   gem 'selenium-webdriver'
+  gem "binding_of_caller"
 end
 
 group :test do

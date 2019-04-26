@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(massage_params)
     @message.recipient_id = params[:recipient_id]
+    @message[:body] = @message.body.to_plain_text
 
     # ActionCable.server.broadcast 'message_channel', message: render_message(@message) if @message.save!
 
@@ -91,7 +92,7 @@ class MessagesController < ApplicationController
 
   def set_messages
     @current_user_id = current_user&.id
-    # @messages = Message.send_messages(current_user).or(Message.date_limit('20180731')).includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
-    @messages = Message.includes(:sender, :recipient).order('updated_at DESC').page(params[:page]).without_count
+    # @messages = Message.send_messages(current_user).or(Message.date_limit('20190731')).includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
+    @messages = Message.includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
   end
 end

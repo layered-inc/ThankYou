@@ -37,7 +37,6 @@ class User < ApplicationRecord
 
   has_many :messages, class_name: "Message", foreign_key: :sender_id, inverse_of: :sender, dependent: :destroy
   has_many :messages, class_name: "Message", foreign_key: :recipient_id, inverse_of: :recipient, dependent: :destroy
-  validates_associated :messages
 
   validates :email, presence: true
 

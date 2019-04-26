@@ -1,0 +1,98 @@
+//
+// Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
+// the trix-editor content (whether displayed or under editing). Feel free to incorporate this
+// inclusion directly in any other asset bundle and remove this file.
+//
+//= require trix/dist/trix
+
+trix-editor#message_body {
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0.4em 0.6em;
+  min-height: 30em;
+  outline: none;
+}
+
+trix-editor [data-trix-mutable=true] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+trix-editor [data-trix-mutable=true] img {
+  box-shadow: 0 0 0 2px highlight;
+}
+
+trix-editor .attachment .remove {
+  display: block;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  line-height: 22px;
+  font-size: 0;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+trix-editor .attachment .remove:after {
+  content: '×';
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.6;
+}
+
+trix-editor .attachment .remove:hover:after {
+  opacity: 1;
+}
+
+trix-editor .attachment .caption.caption-editing textarea {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// We need to override trix.css’s image gallery styles to accommodate the
+// <action-text-attachment> element we wrap around attachments. Otherwise,
+// images in galleries will be squished by the max-width: 33%; rule.
+.trix-content {
+  .attachment-gallery {
+    > action-text-attachment,
+    > .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      > action-text-attachment,
+      > .attachment {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  action-text-attachment {
+    .attachment {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+}
