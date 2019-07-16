@@ -35,9 +35,9 @@ https://api.slack.com/docs/sign-in-with-slack
 ## Built with
 ThankYou Rails is built with following libraries.
 
-- Ruby
-- Ruby on Rails
-- PostgreSQL
+- Ruby 2.6
+- Ruby on Rails 6
+- PostgreSQL 10
 
 ## Development
 ```
@@ -47,7 +47,7 @@ bundle install --path vendor/bundle
 bundle exec rails s
 ```
 
-## How to deploy？ 
+## How to deploy？
 
 ### Deploy on the Heroku dashboard
 1. Create a new app with heroku
@@ -57,8 +57,8 @@ bundle exec rails s
 ![image](https://user-images.githubusercontent.com/30608925/36359274-a6a8ec22-155c-11e8-99ce-f3a56c539f04.png)
 
 ### Deploy on the command line
-Getting Started with Rails 5.x on Heroku
-https://devcenter.heroku.com/articles/getting-started-with-rails5
+Getting Started with Rails 6.x on Heroku
+https://devcenter.heroku.com/articles/getting-started-with-rails6
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/media-cf/ThankYou

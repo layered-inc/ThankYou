@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.3'
+ruby '2.6.4'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,8 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '~> 5.2'
-gem 'rails', '~> 6.0.0.rc1'
-
+gem 'rails', '~> 6.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "bootstrap-sass", ">= 3.4.1"
@@ -27,7 +26,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-# gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -40,7 +39,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+
 gem 'omniauth'
 # gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'auth-hash-fixes'
 gem 'omniauth-slack'

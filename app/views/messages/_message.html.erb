@@ -5,7 +5,7 @@
         <div class="media-left">
           <% if message.sender&.provider %>
             <% if message.sender&.image %>
-              <%= image_tag message.sender&.image, class: 'img-rounded media-object profile-1' %>
+              <%= image_tag message.sender&.image, class: 'img-rounded media-object profile-1', loading: 'lazy' %>
             <% end %>
             <%= message.sender&.name %>
           <% else %>
@@ -20,7 +20,7 @@
         <div class="media-right">
           <% if message.recipient&.provider %>
             <% if message.recipient&.image %>
-              <%= image_tag message.recipient&.image, class: 'img-rounded media-object profile-1 pull-right' %>
+              <%= image_tag message.recipient&.image, class: 'img-rounded media-object profile-1 pull-right', loading: 'lazy' %>
             <% end %>
             <%= message.recipient&.name %>
           <% else %>
