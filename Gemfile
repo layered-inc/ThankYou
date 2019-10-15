@@ -43,7 +43,8 @@ gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'maste
 
 gem 'omniauth'
 # gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'auth-hash-fixes'
-gem 'omniauth-slack'
+gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
+
 # https://github.com/CodeSeven/toastr
 
 gem 'bootstrap-select-rails'
