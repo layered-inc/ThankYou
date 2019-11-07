@@ -47,6 +47,10 @@ p.copyright {
   border-color: transparent;
   z-index: 10;
 
+  .new_message-link {
+    margin-top: 2px;
+  }
+
   .navbar-nav > li > a {
     color: white;
     font-size: 13px;

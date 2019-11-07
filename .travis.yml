@@ -17,9 +17,9 @@ cache:
 before_install:
   - gem update --system
   - gem update bundler
-  - nvm install v8.11.4
+  - nvm install v8.16.2
   - node -v
-  - npm i -g yarn@1.9.4
+  - npm i -g yarn@1.17.3
   - yarn
 
 before_script:

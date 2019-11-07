@@ -21,7 +21,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li>
+          <li class="new_message-link">
             <%= link_to new_message_path, remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
               <i class="fa fa-file-text-o" aria-hidden="true"></i> メッセージを書く
             <% end %>

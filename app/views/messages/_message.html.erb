@@ -33,7 +33,6 @@
   </div>
 
   <div class="detail">
-    <%#= markdown(message.body) -%>
     <%= message.body.presence || message[:body] -%>
   </div>
 
@@ -64,7 +63,7 @@
         <% if current_user.id == message.recipient&.id %>
         <span class="label label-danger">To me</span>
         <% end %>
-        <span class="hidden-xs"><%= l message.updated_at %></span>
+        <span class="hidden-xs"><%= message.updated_at.strftime("%Y年%-m月%-d日 %H:%M") %></span>
         <%= distance_of_time_in_words_to_now(message.updated_at) %>前
 
         <% if current_user.id == message.sender&.id %>
