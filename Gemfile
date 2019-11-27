@@ -39,11 +39,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #
-gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+gem 'devise'
 
 gem 'omniauth'
-# gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'auth-hash-fixes'
-gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
+# gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'master'
+gem 'ginjo-omniauth-slack', require:'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack', branch: 'master'
+# gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
 
 # https://github.com/CodeSeven/toastr
 
@@ -91,7 +92,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'listen'
-  gem 'rails-footnotes', git: 'https://github.com/rikanu/rails-footnotes.git'
+  gem 'rails-footnotes', git: 'https://github.com/rikanu/rails-footnotes.git', branch: 'rails6'
   gem 'rails_best_practices'
 
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

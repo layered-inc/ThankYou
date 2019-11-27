@@ -42,6 +42,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", auth.uid, auth.provider, auth.info.email).first)
+      # if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", 'U3MLF5XAA', 'slack', 'nikai.yoshimoto@media-cf.co.jp').first)
     else
       user = User.new
       user.password = Devise.friendly_token[0, 20]
@@ -52,10 +53,10 @@ class User < ApplicationRecord
     user.email = auth.info.email
     user.name = auth.info.name # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
-    user.team = auth.info.team
+    user.team = auth.info.team_name
     user.team_id = auth.info.team_id
-
     user.save
+
     user
   end
 

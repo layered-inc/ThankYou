@@ -29,7 +29,7 @@
         end
       %>
       <%= select_tag :recipient_id,
-        options_for_select(option, params[:recipient_id]),
+        options_for_select(option, params['a_user_id']&.to_s),
         { prompt: "選択してください", class: "form-control selectpicker", data: { "live-search": true } }
       %>
     </div>
@@ -54,8 +54,23 @@
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
+    let $message_body = $('#message_body');
+    let $new_message = $('#new_message');
+    $message_body.on('keydown keyup keypress change', function() {
+      localStorage.body = $('#message_body_trix_input_message').val();
+      $('#new-message-icon').removeClass('fa-file-text-o').addClass('fa-pencil text-danger');
+    });
+
+    if (localStorage.body !== undefined) {
+      $message_body.html('<div>' + localStorage.body + '</div>');
+    }
+
+    $new_message.on("submit", function() {
+      localStorage.clear();
+    });
+
     $('.selectpicker').selectpicker();
-    $('#new_message').validate({
+    $new_message.validate({
       rules: {
         'recipient_id': {
           required: true,

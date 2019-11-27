@@ -10,7 +10,7 @@
   },
   "engines": {
     "yarn": "^1.17.3",
-    "node": "8.16.2"
+    "node": "13.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.3.1"
