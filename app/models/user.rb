@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :bigint(8)        not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -23,11 +23,6 @@
 #  team_id                :string
 #  admin_flg              :boolean
 #
-# Indexes
-#
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -40,17 +35,13 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  def self.from_omniauth(auth)
-    if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", auth.uid, auth.provider, auth.info.email).first)
-      # if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", 'U3MLF5XAA', 'slack', 'nikai.yoshimoto@media-cf.co.jp').first)
-    else
-      user = User.new
-      user.password = Devise.friendly_token[0, 20]
-    end
+  self.primary_key = :email
 
-    user.provider = auth.provider
-    user.uid = auth.uid
-    user.email = auth.info.email
+  def self.from_omniauth(auth)
+    user = User.find_or_initialize_by(uid: auth.uid, provider: auth.provider, email: auth.info.email)
+    # if (user = User.where("(uid = ? AND provider = ?) OR lower(email) = ?", 'U3MLF5XAA', 'slack', 'nikai.yoshimoto@media-cf.co.jp').first)
+    user.password = Devise.friendly_token[0, 20]
+
     user.name = auth.info.name # assuming the user model has a name
     user.image = auth.info.image # assuming the user model has an image
     user.team = auth.info.team_name

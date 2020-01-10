@@ -42,9 +42,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 
 gem 'omniauth'
-# gem 'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack.git', branch: 'master'
-gem 'ginjo-omniauth-slack', require:'omniauth-slack', git: 'https://github.com/ginjo/omniauth-slack', branch: 'master'
-# gem 'omniauth-slack', github: 'kmrshntr/omniauth-slack'
+gem 'omniauth-slack'
 
 # https://github.com/CodeSeven/toastr
 
