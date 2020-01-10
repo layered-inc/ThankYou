@@ -2,7 +2,7 @@
 #
 # Table name: likes
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint(8)        not null
 #  message_id :integer
 #  user_id    :integer
 #  created_at :datetime         not null
