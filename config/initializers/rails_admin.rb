@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-  config.excluded_models = %w[ActiveStorage::Blob ActiveStorage::Attachment]
 
   ### Popular gems integration
 
@@ -9,8 +8,8 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
-  ## == Cancan ==
-  config.authorize_with :cancan
+  ## == CancanCan ==
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -25,8 +24,8 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.actions do
-    dashboard # mandatory
-    index # mandatory
+    dashboard                     # mandatory
+    index                         # mandatory
     new
     export
     bulk_delete

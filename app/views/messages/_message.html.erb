@@ -33,7 +33,7 @@
   </div>
 
   <div class="detail">
-    <%= message.body.presence || message[:body] -%>
+    <%== message.body.presence || message[:body].gsub(/\n/, '<br>') %>
   </div>
 
   <div class="detail clearfix">
