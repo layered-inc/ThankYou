@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.6.4'
+ruby '2.7.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -52,7 +52,7 @@ gem "font-awesome-rails"
 gem 'kaminari'
 # gem 'redcarpet'
 gem 'cancancan'
-gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+gem 'rails_admin'
 gem 'bootsnap', require: false
 gem "redis", "~> 4.0"
 gem 'rack-attack'

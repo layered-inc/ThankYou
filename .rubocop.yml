@@ -11,7 +11,7 @@ AllCops:
     - 'spec/**/*'
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.7
   TargetRailsVersion: 5.2
   StyleGuideBaseURL: 'https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md'
 
