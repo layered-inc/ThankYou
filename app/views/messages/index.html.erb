@@ -3,9 +3,9 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     あなたの<strong>感謝の気持ち</strong>をください
     <% if params[:a_user_id].present? %>
-      <%= link_to personality_insights_user_path(params[:a_user_id]), remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
-        <i class="fa fa-search" aria-hidden="true"></i>
-      <% end %>
+      <%#= link_to personality_insights_user_path(params[:a_user_id]), remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
+<!--        <i class="fa fa-search" aria-hidden="true"></i>-->
+      <%# end %>
 
       <%= link_to dashboards_user_path(params[:a_user_id]), remote: true, data: { toggle: :'modal', target: :'.format-modal-lg' } do %>
         <i class="fa fa-bar-chart" aria-hidden="true"></i>
