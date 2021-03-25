@@ -92,7 +92,7 @@ class MessagesController < ApplicationController
 
   def set_messages
     @current_user_id = current_user&.id
-    # @messages = Message.send_messages(current_user).or(Message.date_limit('20200101')).includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
-    @messages = Message.includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
+    @messages = Message.send_messages(current_user).or(Message.date_limit('20210101')).includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
+    # @messages = Message.includes(:sender, :recipient, :rich_text_body).order('updated_at DESC').page(params[:page]).without_count
   end
 end
