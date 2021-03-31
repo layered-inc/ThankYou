@@ -30,15 +30,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:slack]
 
-  has_many :messages, class_name: "Message", foreign_key: :sender_id, inverse_of: :sender, dependent: :destroy
-  has_many :messages, class_name: "Message", foreign_key: :recipient_id, inverse_of: :recipient, dependent: :destroy
+  has_many :messages, class_name: "Message", foreign_key: :sender_id, inverse_of: :sender, dependent: :delete_all
+  has_many :messages, class_name: "Message", foreign_key: :recipient_id, inverse_of: :recipient, dependent: :delete_all
 
   validates :email, presence: true
 
   #self.primary_key = :email
 
   def self.from_omniauth(auth)
-    user = User.find_or_initialize_by(provider: auth.provider, email: auth.info.email)
+    user = User.find_or_initialize_by(email: auth.info.email)
+    user.provider = auth.provider
     user.password = Devise.friendly_token[0, 20]
     user.uid = auth.uid
     user.name = auth.info.name # assuming the user model has a name
