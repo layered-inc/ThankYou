@@ -3,8 +3,7 @@ class MessagesController < ApplicationController
   before_action :set_messages, only: %i[index search]
   before_action :set_users, only: %i[new index search]
 
-  def index;
-  end
+  def index; end
 
   def search
     # a_user_id にするのは 検索urlの場合は パラメータのpageの前に来ないとInfiniteScrollはうまく作動したため
@@ -87,7 +86,7 @@ class MessagesController < ApplicationController
   end
 
   def set_users
-    @users = User.all
+    @users = User.where(archived: false)
   end
 
   def set_messages

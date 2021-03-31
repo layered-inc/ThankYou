@@ -32,7 +32,7 @@
               <% if current_user.provider %>
                 <!-- 認証ログインをしている時 -->
                 <%= image_tag current_user.image, class: 'img-circle profile-0' %>
-                <%= current_user.name %>
+                <%= current_user.name %> (<%= current_user.email %>)
               <% else %>
                 <%= current_user.email %>
               <% end %>

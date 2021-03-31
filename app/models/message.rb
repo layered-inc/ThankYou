@@ -2,7 +2,7 @@
 #
 # Table name: messages
 #
-#  id           :bigint(8)        not null
+#  id           :bigint(8)        not null, primary key
 #  sender_id    :integer
 #  recipient_id :integer
 #  body         :text
@@ -19,7 +19,7 @@ class Message < ApplicationRecord
 
   has_rich_text :body
 
-  has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :delete_all
 
   max_paginates_per 15
 
