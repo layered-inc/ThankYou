@@ -1,36 +1,38 @@
 <div class="item-box">
-  <div class="image">
-    <div class="img-wrap">
-      <div class="media">
-        <div class="media-left">
-          <% if message.sender&.provider %>
-            <% if message.sender&.image %>
-              <%= image_tag message.sender&.image, class: 'img-rounded media-object profile-1', loading: 'lazy' %>
-            <% end %>
-            <%= message.sender&.name %>
-          <% else %>
-            <%= message.sender&.email %>
-          <% end %>
-        </div>
+  <ol class="steps">
+    <li class="current left">
+      <% if message.sender&.provider %>
+        <% if message.sender&.image %>
+          <%= image_tag message.sender&.image, class: 'img-rounded media-object profile-1 img-rounded pull-left', loading: 'lazy' %>
+        <% end %>
 
-        <div class="media-body">
-          <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
-        </div>
+        <strong class="pull-right">
+          <%= message.sender&.name %>
+        </strong>
+      <% else %>
+        <%= message.sender&.email %>
+      <% end %>
 
-        <div class="media-right">
-          <% if message.recipient&.provider %>
-            <% if message.recipient&.image %>
-              <%= image_tag message.recipient&.image, class: 'img-rounded media-object profile-1 pull-right', loading: 'lazy' %>
-            <% end %>
-            <%= message.recipient&.name %>
-          <% else %>
-            <i class="fa fa-envelope fa-3x pull-right" aria-hidden="true"></i>
-            <%= message.recipient&.email %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+      <i class="fa fa-heart fa-lg heart"></i>
+    </li>
+
+    <li class="current right">
+      <% if message.recipient&.provider %>
+        <% if message.recipient&.image %>
+          <%= image_tag message.recipient&.image, class: 'img-rounded media-object profile-1 img-rounded pull-right', loading: 'lazy' %>
+        <% end %>
+
+        <strong>
+          <%= message.recipient&.name %>
+        </strong>
+      <% else %>
+        <i class="fa fa-envelope fa-3x pull-right" aria-hidden="true"></i>
+        <strong>
+          <%= message.recipient&.email %>
+        </strong>
+      <% end %>
+    </li>
+  </ol>
 
   <div class="detail">
     <%== message.body.presence || message[:body].gsub(/\n/, '<br>') %>
